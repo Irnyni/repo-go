@@ -24,7 +24,6 @@ func main() {
 		}
 
 	}
-
 	dados["debora"] = []string{
 
 		"passear",
