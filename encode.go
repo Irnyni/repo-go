@@ -3,8 +3,6 @@ package main
 import (
 	"os"
 	"encoding/json"
-
-
 )
 
 type Carro struct {
@@ -25,8 +23,11 @@ carro1 := Carro{
 		Combustivel: "gasolina",
 		Km:          130000,
 	}
+	carro2 := Carro{"volkswagen", "passat", "2020", 200000, "gasolina",
+		150000}
 encoder:=json.NewEncoder(os.Stdout)
 encoder.Encode(carro1)
+encoder.Encode(carro2)
 
 
 }
