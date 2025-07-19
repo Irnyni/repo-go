@@ -1,8 +1,8 @@
 package main
 
 import (
-		"fmt"
-		"encoding/json"
+	"os"
+	"encoding/json"
 
 
 )
@@ -16,15 +16,17 @@ type Carro struct {
 	Km          int     `json:"Km"`
 }
 
-
-
 func main(){
-sliceofbytes:=[]byte(`{"Marca":"fiat","Modelo":"argo","Ano":"2015","Fipe":45000.7,"Combustivel":"gasolina","Km":130000}`)
-var carros Carro
-err := json.Unmarshal(sliceofbytes,&carros)
-if err!= nil{
-		fmt.Println(err)
-}
-fmt.Println(carros.Modelo)
+carro1 := Carro{
+		Marca:       "fiat",
+		Modelo:      "argo",
+		Ano:         "2015",
+		Fipe:        45000.70,
+		Combustivel: "gasolina",
+		Km:          130000,
+	}
+encoder:=json.NewEncoder(os.Stdout)
+encoder.Encode(carro1)
+
 
 }
