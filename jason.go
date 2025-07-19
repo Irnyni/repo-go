@@ -21,7 +21,7 @@ func main() {
 		Ano:         "2015",
 		Fipe:        45000.70,
 		Combustivel: "gasolina",
-		Km:          120000,
+		Km:          130000,
 	}
 	carro2 := Carro{"volkswagen", "passat", "2020", 200000, "gasolina",
 		150000}
