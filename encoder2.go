@@ -41,7 +41,4 @@ err1:= json.Unmarshal(sliceb,&f)
 if err != nil{fmt.Println(err1)}
 fmt.Println("Tranformação de json para go através do unmarshal:",f)
 
-
-
-
 }
