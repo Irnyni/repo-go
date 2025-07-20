@@ -21,6 +21,6 @@ if err != nil{
 
 }
 fmt.Println(string(a))
-fmt.Println(b)
+fmt.Println(b[2].Salario)
 
 }
