@@ -21,8 +21,7 @@ func main(){
 
 funcionarios:= []Funcionario{f1,f2,f3}
 fmt.Println(funcionarios)
-encoder:=json.NewEncoder(os.Stdout)
-err:=encoder.Encode (funcionarios)
+err:=json.NewEncoder(os.Stdout).Encode(funcionarios)
 if err != nil{
 	fmt.Println(err)
 }
