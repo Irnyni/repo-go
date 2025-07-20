@@ -26,6 +26,7 @@ fs,err:= json.Marshal(funcionarios)
 if err != nil{
 	fmt.Println(err)
 }
+fmt.Println(funcionarios)
 fmt.Println(string(fs))
 
 
