@@ -3,9 +3,6 @@ package main
 import(
 	"fmt"
 	"sort"
-
-
-
 )
 type User struct{
 		Nome string
