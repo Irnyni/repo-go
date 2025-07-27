@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 	"sync"
 	"sync/atomic"
 )
@@ -12,7 +13,7 @@ var mutex sync.Mutex
 
 func main() {
 
-	for i < 1000 {
+	for i < 10000 {
 		gr.Add(3)
 		go cont1()
 		go cont2()
@@ -25,7 +26,9 @@ func main() {
 
 func cont1() {
 	atomic.AddInt32(&i, 1)
+
 	atomic.LoadInt32(&i)
+	runtime.Gosched()
 	fmt.Println(i)
 	gr.Done()
 }
