@@ -8,6 +8,7 @@ import (
 
 var goroutine sync.WaitGroup
 var cont = 0
+var mutex sync.Mutex
 
 func main() {
 	gerarGo(1000000)
