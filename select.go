@@ -4,8 +4,8 @@ import "fmt"
 
 func main() {
 	x := 10
-	a := make(chan int)
-	b := make(chan int)
+	a := make(chan int, 10)
+	b := make(chan int, 10)
 	go func(x int) {
 		for i := 0; i < x; i++ {
 			a <- i
