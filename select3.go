@@ -21,6 +21,8 @@ func enviar(p, i chan int, e chan string, n int) {
 
 		}
 	}
+	close(p)
+	close(i)
 	e <- "encerrar"
 
 }
