@@ -28,13 +28,13 @@ func criago(n int, c chan int) {
 
 	for i := 0; i < n; i++ {
 
-		go func() {
+		go func(n int) {
 			defer wg.Done()
 			for i := 0; i < 10; i++ {
-				c <- i
+				c <- i * n
 
 			}
 
-		}()
+		}(i)
 	}
 }
