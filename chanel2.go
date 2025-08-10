@@ -32,6 +32,7 @@ func colocar(canal chan int) {
 	defer close(canal)
 	defer wg.Done()
 	for i := 0; i < 200; i++ {
+		fmt.Println("Goroutines :", runtime.NumGoroutine())
 		canal <- i
 	}
 
