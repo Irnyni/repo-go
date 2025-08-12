@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"io"
+	"log"
 	"os"
 	"strings"
 )
@@ -10,7 +10,7 @@ import (
 func main() {
 	file, err := os.Create("file.txt")
 	if err != nil {
-		fmt.Println(err)
+		log.Println("erro:", err)
 		return
 	}
 	texto := strings.NewReader("texto do novo file")
