@@ -4,10 +4,10 @@ import (
 	"testing"
 )
 
-func Testsoma(t *testing.T) {
+func TestSoma(t *testing.T) {
 	b := []int{1, 2, 3, 4, 5, 6}
 	a := soma(b)
-	esperado := 17
+	esperado := 21
 	if a != esperado {
 		t.Error("Expected:", a, "Got", esperado)
 	}
