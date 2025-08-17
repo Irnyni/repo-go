@@ -16,3 +16,11 @@ func soma(si []int) int {
 
 	return total
 }
+func soma2(a ...int) int {
+	total := 0
+	for _, v := range a {
+		total = total + v
+	}
+
+	return total
+}
