@@ -21,12 +21,12 @@ func TestTabela(t *testing.T) {
 	testes := []Teste{
 		Teste{Data: []int{2, 2, 2}, Resp: 6},
 		Teste{Data: []int{3, 3, 3}, Resp: 9},
-		Teste{Data: []int{45, 5, 5}, Resp: 12},
-		Teste{Data: []int{4, 3, 4}, Resp: 12},
-		Teste{Data: []int{4, 1, 4}, Resp: 12},
+		Teste{Data: []int{45, 5, 5}, Resp: 55},
+		Teste{Data: []int{4, 3, 4}, Resp: 11},
+		Teste{Data: []int{4, 1, 4}, Resp: 9},
 		Teste{Data: []int{4, 4, 4}, Resp: 12},
-		Teste{Data: []int{4, 2, 4}, Resp: 12},
-		Teste{Data: []int{41, 4, 4}, Resp: 12},
+		Teste{Data: []int{4, 2, 4}, Resp: 10},
+		Teste{Data: []int{41, 4, 4}, Resp: 49},
 	}
 	for _, v := range testes {
 		somatoria := soma2(v.Data...)
