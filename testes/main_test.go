@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -9,6 +10,12 @@ type Teste struct {
 	Resp int
 }
 
+func Example() {
+	fmt.Println(soma2(1, 2, 3, 4, 5, 6))
+	//Output:
+	//21
+
+}
 func TestSoma(t *testing.T) {
 	b := []int{1, 2, 3, 4, 5, 6}
 	a := soma(b)
