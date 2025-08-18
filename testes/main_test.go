@@ -27,8 +27,8 @@ func TestSoma(t *testing.T) {
 func BenchmarkNada(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		a := []int{1, 2, 3, 4, 5, 6}
-		b := Soma2(a...)
-		fmt.Printf("%v", b)
+		Soma2(a...)
+
 	}
 }
 func TestTabela(t *testing.T) {
