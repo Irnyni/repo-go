@@ -11,7 +11,7 @@ type Teste struct {
 }
 
 func Example() {
-	fmt.Println(soma2(1, 2, 3, 4, 5, 6))
+	fmt.Println(Soma2(1, 2, 3, 4, 5, 6))
 	//Output:
 	//21
 
@@ -22,6 +22,13 @@ func TestSoma(t *testing.T) {
 	esperado := 21
 	if a != esperado {
 		t.Error("Expected:", a, "Got", esperado)
+	}
+}
+func BenchmarkNada(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		a := []int{1, 2, 3, 4, 5, 6}
+		b := Soma2(a...)
+		fmt.Printf("%v", b)
 	}
 }
 func TestTabela(t *testing.T) {
@@ -36,7 +43,7 @@ func TestTabela(t *testing.T) {
 		Teste{Data: []int{41, 4, 4}, Resp: 49},
 	}
 	for _, v := range testes {
-		somatoria := soma2(v.Data...)
+		somatoria := Soma2(v.Data...)
 		if somatoria != v.Resp {
 			t.Error("Expected:", v.Resp, "Got:", somatoria)
 		}

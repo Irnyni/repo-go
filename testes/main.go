@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	a := []int{1, 2, 3, 4, 5, 6}
@@ -16,7 +18,7 @@ func soma(si []int) int {
 
 	return total
 }
-func soma2(a ...int) int {
+func Soma2(a ...int) int {
 	total := 0
 	for _, v := range a {
 		total = total + v
