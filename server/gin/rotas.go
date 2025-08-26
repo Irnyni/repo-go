@@ -31,6 +31,8 @@ func main() {
 	r.GET("/carros", listarcarros)
 	r.POST("/carros", criarCarros)
 	r.POST("/varioscarros", criarvariosCarros)
+	r.GET("/carros/:marca", buscarPorMarca)
+
 	r.Run(":8099")
 }
 
@@ -60,5 +62,21 @@ func criarvariosCarros(c *gin.Context) {
 	}
 	banco.Create(&carro)
 	c.JSON(http.StatusCreated, carro)
+
+}
+
+func buscarPorMarca(c *gin.Context) {
+	marca := c.Param("marca")
+	var carros []Carro
+	result := banco.Where("marca=?", marca).Find(&carros)
+	if result.Error != nil {
+		c.JSON(http.StatusNotFound, gin.H{"erro": "carro nao encontrado"})
+		return
+	}
+	if len(carros) == 0 {
+		c.JSON(http.StatusNotFound, gin.H{"mensagem": "Nenhum carro encontrado para essa marca"})
+		return
+	}
+	c.JSON(http.StatusOK, carros)
 
 }
