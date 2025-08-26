@@ -12,6 +12,7 @@ import (
 var db *sql.DB
 
 type Video struct {
+	Id        int    `json:"id"`
 	Titulo    string `json:"titulo"`
 	Descricao string `json:"descricao"`
 	Imagem    string `json:"imagem"`
@@ -64,7 +65,7 @@ func videos(w http.ResponseWriter, r *http.Request) {
 			fmt.Println("Erro ao salvar no banco")
 		}
 	case http.MethodGet:
-		rows, err := db.Query(`SELECT titulo, descricao, imagem FROM videos`)
+		rows, err := db.Query(`SELECT id,titulo, descricao, imagem FROM videos`)
 		if err != nil {
 			fmt.Println(err)
 			defer rows.Close()
@@ -73,15 +74,13 @@ func videos(w http.ResponseWriter, r *http.Request) {
 		var videos []Video
 		for rows.Next() {
 			var v Video
-			err := rows.Scan(&v.Titulo, &v.Descricao, &v.Imagem)
+			err := rows.Scan(&v.Id, &v.Titulo, &v.Descricao, &v.Imagem)
 			if err != nil {
 				http.Error(w, "Erro ao ler dados do banco", http.StatusInternalServerError)
 				return
 			}
 			videos = append(videos, v)
 		}
-
-		// Retorna os dados como JSON
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(videos)
 
