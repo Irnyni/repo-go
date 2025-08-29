@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/sqlite"
@@ -31,7 +32,9 @@ func main() {
 	r.GET("/carros", listarcarros)
 	r.POST("/carros", criarCarros)
 	r.POST("/varioscarros", criarvariosCarros)
-	r.GET("/carros/:marca", buscarPorMarca)
+	r.GET("/carros/marca/:marca", buscarPorMarca)
+	r.GET("/carros/:id", buscarById)
+	r.GET("/carros/km/:km", buscarBykm)
 
 	r.Run(":8099")
 }
@@ -76,6 +79,34 @@ func buscarPorMarca(c *gin.Context) {
 	if len(carros) == 0 {
 		c.JSON(http.StatusNotFound, gin.H{"mensagem": "Nenhum carro encontrado para essa marca"})
 		return
+	}
+	c.JSON(http.StatusOK, carros)
+
+}
+
+func buscarById(c *gin.Context) {
+	var carro Carro
+	id := c.Param("id")
+	result := banco.First(&carro, id)
+	if result.Error != nil {
+		c.JSON(http.StatusNotFound, gin.H{"mensagem": "não encontrado"})
+	}
+	c.JSON(http.StatusOK, carro)
+
+}
+
+func buscarBykm(c *gin.Context) {
+	var carros []Carro
+	kmrodados := c.Param("km")
+	kms, err := strconv.Atoi(kmrodados)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro"})
+		return
+	}
+
+	result := banco.Where("km<?", kms).Find(&carros)
+	if result.Error != nil {
+		c.JSON(http.StatusNotFound, gin.H{"mensagem": "Nada encontrado"})
 	}
 	c.JSON(http.StatusOK, carros)
 
